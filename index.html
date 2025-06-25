@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM Dashboard - Case View</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+        }
+        /* Custom scrollbar for sidebar */
+        .sidebar-scroll {
+            overflow-y: auto;
+            scrollbar-width: thin; /* Firefox */
+            scrollbar-color: #cbd5e1 transparent; /* Firefox */
+        }
+        .sidebar-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+        .sidebar-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .sidebar-scroll::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 10px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+        /* Style for iframe placeholders */
+        .iframe-placeholder {
+            border: 2px dashed #a0aec0; /* Tailwind gray-400 */
+            background-color: #e2e8f0; /* Tailwind gray-200 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #4a5568; /* Tailwind gray-700 */
+            font-weight: 600;
+            min-height: 200px;
+            border-radius: 0.75rem; /* rounded-xl */
+            padding: 1rem;
+            margin-bottom: 1.5rem; /* mb-6 */
+        }
+    </style>
+</head>
+<body class="flex flex-col h-screen">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-4 shadow-lg flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <i class="fas fa-cubes text-3xl"></i>
+            <h1 class="text-2xl font-bold">CRM System</h1>
+        </div>
+        <div class="relative">
+            <button class="flex items-center space-x-2 text-white hover:text-blue-200 focus:outline-none">
+                <img src="https://placehold.co/40x40/4a5568/ffffff?text=U" alt="User Avatar" class="rounded-full border-2 border-white">
+                <span class="hidden md:block">John Doe</span>
+                <i class="fas fa-chevron-down text-sm"></i>
+            </button>
+            <!-- Dropdown Menu (can be implemented with JS) -->
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <div class="flex flex-1 overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-gray-800 text-gray-100 p-4 shadow-lg flex-shrink-0 hidden md:block sidebar-scroll">
+            <nav class="space-y-2">
+                <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 transition-colors duration-200">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span class="font-medium">Dashboard</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 transition-colors duration-200 bg-blue-600 text-white">
+                    <i class="fas fa-users"></i>
+                    <span class="font-medium">Contacts</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 transition-colors duration-200">
+                    <i class="fas fa-building"></i>
+                    <span class="font-medium">Companies</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 transition-colors duration-200">
+                    <i class="fas fa-handshake"></i>
+                    <span class="font-medium">Deals</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 transition-colors duration-200">
+                    <i class="fas fa-tasks"></i>
+                    <span class="font-medium">Tasks</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 transition-colors duration-200">
+                    <i class="fas fa-chart-line"></i>
+                    <span class="font-medium">Reports</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 transition-colors duration-200">
+                    <i class="fas fa-cog"></i>
+                    <span class="font-medium">Settings</span>
+                </a>
+                <!-- Separator -->
+                <div class="border-t border-gray-700 my-4"></div>
+                <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 transition-colors duration-200">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span class="font-medium">Logout</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area - Case View -->
+        <main class="flex-1 p-6 overflow-y-auto">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-3xl font-extrabold text-gray-800">Case #98765: Order Delay for Widget X3</h2>
+                <div class="space-x-2">
+                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200 flex items-center space-x-2">
+                        <i class="fas fa-edit"></i>
+                        <span>Edit Case</span>
+                    </button>
+                    <button class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200 flex items-center space-x-2">
+                        <i class="fas fa-trash-alt"></i>
+                        <span>Delete Case</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Case Details and Customer Info -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                <!-- Case Information Card -->
+                <div class="bg-white rounded-xl shadow-md p-6 lg:col-span-2">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center space-x-2">
+                        <i class="fas fa-info-circle text-blue-500"></i>
+                        <span>Case Information</span>
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-gray-500 text-sm">Status:</p>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-yellow-100 text-yellow-800">
+                                <i class="fas fa-clock mr-1"></i> Pending
+                            </span>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-sm">Priority:</p>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-red-100 text-red-800">
+                                <i class="fas fa-exclamation-circle mr-1"></i> High
+                            </span>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-sm">Created Date:</p>
+                            <p class="text-gray-900 font-medium">2025-06-20</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-sm">Last Updated:</p>
+                            <p class="text-gray-900 font-medium">2025-06-24</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-sm">Assigned To:</p>
+                            <p class="text-gray-900 font-medium">Agent Jane Doe</p>
+                        </div>
+                        <div class="md:col-span-2">
+                            <p class="text-gray-500 text-sm mb-1">Case Description:</p>
+                            <p class="text-gray-900">Customer reported an unexpected delay in the shipment of their order #ORD7890 for 10 units of Widget X3. The original delivery estimate was June 23rd, but the tracking shows no update since June 21st.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Customer Information Card -->
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center space-x-2">
+                        <i class="fas fa-user-circle text-green-500"></i>
+                        <span>Customer Information</span>
+                    </h3>
+                    <div class="space-y-3">
+                        <div>
+                            <p class="text-gray-500 text-sm">Name:</p>
+                            <p class="text-gray-900 font-medium">Alice Wonderland</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-sm">Company:</p>
+                            <p class="text-gray-900 font-medium">Curious Innovations Inc.</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-sm">Email:</p>
+                            <p class="text-blue-600 font-medium break-all">alice.w@example.com</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-sm">Phone:</p>
+                            <p class="text-gray-900 font-medium">+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <button class="mt-6 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg w-full transition-colors duration-200 flex items-center justify-center space-x-2">
+                        <i class="fas fa-address-card"></i>
+                        <span>View Contact Profile</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Recent Interactions / Timeline -->
+            <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center space-x-2">
+                    <i class="fas fa-history text-purple-500"></i>
+                    <span>Recent Interactions</span>
+                </h3>
+                <div class="space-y-4">
+                    <div class="border-l-4 border-blue-400 pl-4 py-2">
+                        <p class="text-sm text-gray-500">2025-06-24 10:30 AM - <span class="font-medium text-gray-700">Agent Jane Doe</span></p>
+                        <p class="text-gray-800 font-medium">Called customer to acknowledge receipt of case. Informed them we are investigating the shipping delay with logistics team.</p>
+                    </div>
+                    <div class="border-l-4 border-green-400 pl-4 py-2">
+                        <p class="text-sm text-gray-500">2025-06-23 03:15 PM - <span class="font-medium text-gray-700">System</span></p>
+                        <p class="text-gray-800 font-medium">Email sent: "Case #98765 received confirmation."</p>
+                    </div>
+                    <div class="border-l-4 border-yellow-400 pl-4 py-2">
+                        <p class="text-sm text-gray-500">2025-06-20 09:00 AM - <span class="font-medium text-gray-700">Customer Portal</span></p>
+                        <p class="text-gray-800 font-medium">New case submitted via customer portal regarding order #ORD7890 delay.</p>
+                    </div>
+                </div>
+                <button class="mt-6 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-lg w-full transition-colors duration-200 flex items-center justify-center space-x-2">
+                    <i class="fas fa-plus"></i>
+                    <span>Add New Interaction</span>
+                </button>
+            </div>
+
+            <!-- Iframe Placeholders -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div id="iframe-placeholder-documents" class="iframe-placeholder">
+                    <p>Placeholder for Related Documents/Attachments (e.g., from an iframe)</p>
+                </div>
+                <div id="iframe-placeholder-analytics" class="iframe-placeholder">
+                    <p>Placeholder for Customer Usage Analytics (e.g., from an iframe)</p>
+                </div>
+            </div>
+            <div id="iframe-placeholder-chat-history" class="iframe-placeholder">
+                <p>Placeholder for Chat History (e.g., from an iframe)</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
